@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT KWENTA - DepEd Finance & Accounting Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deped: {
+                            navy: '#0b2545',
+                            darknavy: '#051329',
+                            blue: '#134074',
+                            green: '#1e7e34',
+                            brightgreen: '#28a745',
+                            lightgreen: '#e8f5e9',
+                            gold: '#d4af37',
+                            lightbg: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-banner {
+            background: linear-gradient(135deg, #051329 0%, #0b2545 50%, #134074 100%);
+        }
+        .green-gradient {
+            background: linear-gradient(135deg, #1e7e34 0%, #28a745 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .badge-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .6; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Top Government Header Bar -->
+    <div class="bg-deped-darknavy text-slate-300 text-xs py-1.5 px-4 border-b border-slate-700/50">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <span class="font-semibold text-slate-200">Republic of the Philippines</span>
+                <span>•</span>
+                <span>Department of Education</span>
+                <span>•</span>
+                <span class="text-deped-gold">SDO CATBALOGAN CITY - Finance Division - Accounting Unit</span>
+            </div>
+            <div class="flex items-center space-x-4 text-xs">
+                <span><i class="fa-solid fa-clock text-deped-gold mr-1"></i> Office Hours: Mon-Fri 8:00 AM - 5:00 PM</span>
+                <a href="#contact" class="hover:text-white transition"><i class="fa-solid fa-headset mr-1"></i> Contact Unit</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative w-12 h-12 rounded-full border-2 border-deped-green bg-deped-navy flex items-center justify-center overflow-hidden shadow-sm">
+                        <!-- Custom Logo SVG Representation -->
+                        <svg viewBox="0 0 100 100" class="w-10 h-10">
+                            <circle cx="50" cy="50" r="48" fill="#0b2545" stroke="#1e7e34" stroke-width="3"/>
+                            <path d="M 25,60 Q 50,20 75,60 L 50,50 Z" fill="#28a745"/>
+                            <path d="M 30,65 L 70,65 L 50,45 Z" fill="#ffffff" opacity="0.9"/>
+                            <polyline points="20,70 35,50 50,60 70,35 85,25" fill="none" stroke="#28a745" stroke-width="4" stroke-linecap="round"/>
+                            <polyline points="75,25 85,25 85,35" fill="none" stroke="#28a745" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="75" cy="40" r="8" fill="#d4af37"/>
+                            <text x="75" y="44" font-size="10" font-weight="bold" fill="#051329" text-anchor="middle">₱</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-xl tracking-tight text-deped-navy">PROJECT <span class="text-deped-green">KWENTA</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium">Division Accounting Support & Compliance Portal</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-700">
+                    <a href="#home" class="hover:text-deped-green transition py-1 border-b-2 border-deped-green">Home</a>
+                    <a href="#pillars" class="hover:text-deped-green transition py-1">Core Pillars</a>
+                    <a href="#ta-request" class="hover:text-deped-green transition py-1">TA Helpdesk</a>
+                    <a href="#resources" class="hover:text-deped-green transition py-1">Learning & Downloads</a>
+                    <a href="#calculators" class="hover:text-deped-green transition py-1">Tools & Calculators</a>
+                    <a href="#transparency" class="hover:text-deped-green transition py-1">Transparency Board</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="#ta-request" class="bg-deped-green hover:bg-emerald-700 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow-sm hover:shadow transition duration-200 flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Request
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Home</a>
+            <a href="#pillars" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Core Pillars & Values</a>
+            <a href="#ta-request" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Technical Assistance Helpdesk</a>
+            <a href="#resources" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Downloadable Forms & Guidelines</a>
+            <a href="#calculators" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Liquidation Calculators</a>
+            <a href="#transparency" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Transparency Dashboard</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-deped-green">Contact Accounting Unit</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-banner text-white relative overflow-hidden py-16 lg:py-24">
+        <!-- Background Graphic Elements -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute -right-10 -bottom-10 w-96 h-96 rounded-full bg-deped-green blur-3xl"></div>
+            <div class="absolute left-10 top-10 w-80 h-80 rounded-full bg-blue-500 blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-deped-gold px-3.5 py-1.5 rounded-full text-xs font-semibold border border-white/20">
+                        <i class="fa-solid fa-award"></i> Division Financial Governance Platform
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                        PROJECT <span class="text-deped-brightgreen">KWENTA</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-200 font-medium max-w-2xl">
+                        Strengthening Financial Accountability through Technical Assistance, Capacity Building, and Compliance Support.
+                    </p>
+
+                    <p class="text-sm italic text-deped-gold font-serif bg-slate-900/40 p-3 rounded-lg inline-block border-l-4 border-deped-gold">
+                        "Good Financial Management. Better Schools. Brighter Future."
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                        <a href="#ta-request" class="green-gradient hover:opacity-95 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-handshake-angle"></i> Request Technical Assistance
+                        </a>
+                        <a href="#resources" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/30 backdrop-blur-md transition flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-file-arrow-down"></i> Forms & Checklists Hub
+                        </a>
+                        <a href="#calculators" class="bg-slate-800/80 hover:bg-slate-800 text-slate-200 font-semibold px-5 py-3.5 rounded-xl border border-slate-700 transition flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-calculator text-deped-gold"></i> MOOE Tools
+                        </a>
+                    </div>
+
+                    <!-- Quick Metrics Strip -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl font-extrabold text-white">98.4%</div>
+                            <div class="text-xs text-slate-300">MOOE Liquidation Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-deped-brightgreen">1,240+</div>
+                            <div class="text-xs text-slate-300">TA Requests Handled</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-deped-gold">100%</div>
+                            <div class="text-xs text-slate-300">Compliant Schools</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo Display Card Badge -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-deped-darknavy via-deped-navy to-deped-blue p-4 shadow-2xl border-4 border-white/20 flex items-center justify-center text-center">
+                        <!-- Simulated Digital Logo Frame -->
+                        <div class="w-full h-full rounded-full border-2 border-dashed border-deped-brightgreen/60 p-6 flex flex-col items-center justify-between relative">
+                            <!-- Circular Text Simulation -->
+                            <div class="text-[10px] tracking-widest uppercase font-bold text-slate-300 text-center">
+                                TRANSPARENCY • ACCOUNTABILITY • INTEGRITY • EFFICIENCY • TEAMWORK
+                            </div>
+
+                            <!-- Inner Core Graphics -->
+                            <div class="space-y-2">
+                                <div class="flex justify-center items-center gap-3">
+                                    <i class="fa-solid fa-chart-line text-3xl text-deped-brightgreen"></i>
+                                    <i class="fa-solid fa-book-open-reader text-4xl text-white"></i>
+                                    <i class="fa-solid fa-calculator text-3xl text-deped-gold"></i>
+                                </div>
+                                <h3 class="text-2xl font-black tracking-wider text-white">KWENTA</h3>
+                                <div class="h-1 w-16 bg-deped-green mx-auto rounded-full"></div>
+                                <p class="text-[11px] text-slate-200 font-medium px-4">
+                                    DepEd Division Accounting Unit
+                                </p>
+                            </div>
+
+                            <div class="text-[9px] font-semibold text-deped-gold bg-slate-900/80 px-3 py-1 rounded-full border border-deped-gold/40">
+                                Financial Accountability Framework
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Marquee / Banner -->
+    <div class="bg-deped-green text-white py-3 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-around items-center gap-4 text-xs font-bold tracking-wider uppercase">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-eye text-deped-gold"></i> Transparency</span>
+            <span class="text-emerald-300">•</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-scale-balanced text-deped-gold"></i> Accountability</span>
+            <span class="text-emerald-300">•</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-deped-gold"></i> Integrity</span>
+            <span class="text-emerald-300">•</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-deped-gold"></i> Efficiency</span>
+            <span class="text-emerald-300">•</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-users text-deped-gold"></i> Teamwork</span>
+        </div>
+    </div>
+
+    <!-- Core Pillars Section -->
+    <section id="pillars" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-deped-green uppercase tracking-widest mb-2">Our Operational Framework</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900">The Four Pillars of Project KWENTA</h3>
+                <p class="text-slate-600 mt-2 text-sm">
+                    Designed to empower school heads, bookkeepers, and disbursing officers in managing public education funds with accuracy and integrity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Pillar 1 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-blue-100 text-deped-navy flex items-center justify-center text-2xl mb-5 shadow-inner">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <span class="text-xs font-bold text-deped-navy uppercase tracking-wider">Pillar 1</span>
+                    <h4 class="text-xl font-bold text-slate-900 mt-1 mb-2">Transparent Finances</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Open access to financial reporting templates, real-time liquidation monitoring, and regular disclosure of division fund allocation.
+                    </p>
+                    <ul class="mt-4 text-xs text-slate-500 space-y-1.5 border-t border-slate-200 pt-3">
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Clear liquidation guidelines</li>
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Public compliance status</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-100 text-deped-green flex items-center justify-center text-2xl mb-5 shadow-inner">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <span class="text-xs font-bold text-deped-green uppercase tracking-wider">Pillar 2</span>
+                    <h4 class="text-xl font-bold text-slate-900 mt-1 mb-2">Responsible Stewardship</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Strict adherence to COA rules, DBM circulars, and DepEd financial orders ensuring every peso directly benefits learner outcomes.
+                    </p>
+                    <ul class="mt-4 text-xs text-slate-500 space-y-1.5 border-t border-slate-200 pt-3">
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Internal Audit pre-checks</li>
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> BIR Tax compliance aid</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl mb-5 shadow-inner">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-700 uppercase tracking-wider">Pillar 3</span>
+                    <h4 class="text-xl font-bold text-slate-900 mt-1 mb-2">Empowered Schools</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Continuous capacity building, coaching, and 1-on-1 technical assistance for non-IUs and implementing unit financial staff.
+                    </p>
+                    <ul class="mt-4 text-xs text-slate-500 space-y-1.5 border-t border-slate-200 pt-3">
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Helpdesk TA ticketing system</li>
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Hands-on workshops</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-2xl mb-5 shadow-inner">
+                        <i class="fa-solid fa-chart-line-up"></i>
+                    </div>
+                    <span class="text-xs font-bold text-indigo-700 uppercase tracking-wider">Pillar 4</span>
+                    <h4 class="text-xl font-bold text-slate-900 mt-1 mb-2">Sustainable Impact</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Establishing institutionalized financial systems that ensure timely school MOOE disbursements and zero disallowances.
+                    </p>
+                    <ul class="mt-4 text-xs text-slate-500 space-y-1.5 border-t border-slate-200 pt-3">
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Automated financial tools</li>
+                        <li><i class="fa-solid fa-check text-deped-green mr-1.5"></i> Long-term compliance tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Assistance (TA) Portal -->
+    <section id="ta-request" class="py-16 bg-slate-100 border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- Left: TA Submission Form -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-deped-green text-white flex items-center justify-center">
+                            <i class="fa-solid fa-headset text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900">Technical Assistance Helpdesk</h3>
+                            <p class="text-xs text-slate-500">Need accounting or liquidation support? Request assistance from Division Accountants.</p>
+                        </div>
+                    </div>
+
+                    <form id="taForm" onsubmit="handleTaSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
+                                <input type="text" required placeholder="e.g., Juan Dela Cruz" class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-deped-green focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Designation / Position</label>
+                                <select required class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-deped-green focus:outline-none">
+                                    <option value="">Select Position...</option>
+                                    <option>School Principal / School Head</option>
+                                    <option>Administrative Officer II (Bookkeeper)</option>
+                                    <option>Disbursing Officer</option>
+                                    <option>District Financial Focal Person</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">School Name / Station</label>
+                                <input type="text" required placeholder="e.g., Central Elementary School" class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-deped-green focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Email / Mobile No.</label>
+                                <input type="text" required placeholder="0917XXXXXXX or deped.gov.ph" class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-deped-green focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Topic / Concern Area</label>
+                            <select id="taTopic" required class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-deped-green focus:outline-none">
+                                <option value="">Select Topic...</option>
+                                <option>MOOE Liquidation Requirements</option>
+                                <option>Cash Advance Replenishment</option>
+                                <option>BIR Tax Withholding & Remittance</option>
+                                <option>Payroll & Remittance Reconciliation</option>
+                                <option>Procurement / BAC Financial Documents</option>
+                                <option>COA Audit Findings / AOM Compliance</option>
+                                <option>e-OR & Official Receipts Issuance</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Detailed Description of Assistance Needed</label>
+                            <textarea rows="4" required placeholder="Please describe the specific issue or question..." class="w-full text-xs px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-deped-green focus:outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full green-gradient text-white font-bold py-3 px-4 rounded-xl shadow-md hover:opacity-95 transition text-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Technical Assistance Request
+                        </button>
+                    </form>
+
+                    <div id="taSuccessMsg" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs">
+                        <div class="flex items-center gap-2 font-bold text-sm text-emerald-900 mb-1">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i> TA Request Submitted Successfully!
+                        </div>
+                        <p>Your Ticket ID is: <span id="generatedTicket" class="font-mono font-bold bg-emerald-200 px-2 py-0.5 rounded text-slate-900">KW-2026-8891</span>. Division accounting personnel will contact you within 24 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Ticket Status Tracker & FAQ -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- Ticket Tracker Box -->
+                    <div class="bg-deped-navy text-white rounded-2xl p-6 shadow-md">
+                        <h4 class="text-lg font-bold mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass text-deped-gold"></i> Track TA Request Status
+                        </h4>
+                        <p class="text-xs text-slate-300 mb-4">Check status of your previously submitted assistance ticket.</p>
+
+                        <div class="flex gap-2 mb-4">
+                            <input type="text" id="ticketInput" placeholder="Enter Ticket Number (e.g. KW-2026-104)" class="w-full text-xs px-3.5 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none">
+                            <button onclick="checkTicketStatus()" class="bg-deped-green hover:bg-emerald-600 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition">
+                                Search
+                            </button>
+                        </div>
+
+                        <div id="ticketResult" class="hidden bg-slate-800/80 p-4 rounded-xl border border-slate-700 text-xs space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Ticket ID:</span>
+                                <span id="resTicketId" class="font-mono font-bold text-deped-gold"></span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Station:</span>
+                                <span id="resStation" class="font-semibold text-white">San Jose NHS</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Status:</span>
+                                <span id="resStatus" class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">IN REVIEW</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Assigned Accountant:</span>
+                                <span id="resAccountant" class="text-slate-200">Mrs. A. Santos, CPA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Box -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                        <h4 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-question text-deped-green"></i> Frequently Asked TA Topics
+                        </h4>
+
+                        <div class="space-y-3 text-xs">
+                            <details class="group bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <summary class="font-semibold text-slate-800 cursor-pointer flex justify-between items-center">
+                                    When is the deadline for monthly MOOE liquidation?
+                                    <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                                </summary>
+                                <p class="text-slate-600 mt-2 leading-relaxed">
+                                    Per DepEd guidelines, MOOE liquidation reports must be submitted on or before the 5th day of the succeeding month to allow timely replenishment.
+                                </p>
+                            </details>
+
+                            <details class="group bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <summary class="font-semibold text-slate-800 cursor-pointer flex justify-between items-center">
+                                    What are the primary documents for travel liquidation?
+                                    <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                                </summary>
+                                <p class="text-slate-600 mt-2 leading-relaxed">
+                                    Approved Travel Order, Certificate of Appearance, Itinerary of Travel, Official Receipts/Tickets, and Certificate of Travel Completed.
+                                </p>
+                            </details>
+
+                            <details class="group bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <summary class="font-semibold text-slate-800 cursor-pointer flex justify-between items-center">
+                                    How to request tax exemption certificates for suppliers?
+                                    <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                                </summary>
+                                <p class="text-slate-600 mt-2 leading-relaxed">
+                                    Submit Form 2307 requests directly via the Accounting Helpdesk or download the automated generator tool below.
+                                </p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources & Downloads Repository -->
+    <section id="resources" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <h2 class="text-xs font-bold text-deped-green uppercase tracking-widest mb-1">Capacity Building & Compliance Support</h2>
+                    <h3 class="text-3xl font-extrabold text-slate-900">Document & Guidelines Hub</h3>
+                    <p class="text-slate-600 text-xs mt-1">Download official DepEd templates, BIR withholding matrices, and liquidation checklists.</p>
+                </div>
+
+                <!-- Search & Filter Controls -->
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="docSearch" onkeyup="filterDocs()" placeholder="Search template or keyword..." class="text-xs px-3.5 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-deped-green w-full sm:w-64">
+                    <select id="docCategory" onchange="filterDocs()" class="text-xs px-3.5 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-deped-green">
+                        <option value="all">All Categories</option>
+                        <option value="mooe">MOOE & Liquidation</option>
+                        <option value="tax">Tax Compliance (BIR)</option>
+                        <option value="payroll">Payroll & Salaries</option>
+                        <option value="procurement">Procurement (BAC)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Documents Grid -->
+            <div id="docsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Document Card 1 -->
+                <div class="doc-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-lg transition flex flex-col justify-between" data-cat="mooe" data-title="mooe liquidation checklist form 2026">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">MOOE & Liquidation</span>
+                            <span class="text-[10px] text-slate-400 font-mono">PDF • 1.2 MB</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">MOOE Liquidation Master Checklist</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Complete required attachments checklist for school maintenance & operational disbursements.</p>
+                    </div>
+                    <button onclick="downloadAlert('MOOE Liquidation Master Checklist')" class="w-full bg-white border border-slate-300 hover:bg-deped-green hover:text-white text-slate-700 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-download"></i> Download Template
+                    </button>
+                </div>
+
+                <!-- Document Card 2 -->
+                <div class="doc-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-lg transition flex flex-col justify-between" data-cat="tax" data-title="bir tax withholding table matrix 2026">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Tax Compliance</span>
+                            <span class="text-[10px] text-slate-400 font-mono">XLSX • 450 KB</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">BIR Tax Withholding Matrix for Goods & Services</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Quick guide for 1% Goods, 2% Services, and 5% Final VAT computation for government procurement.</p>
+                    </div>
+                    <button onclick="downloadAlert('BIR Tax Withholding Matrix')" class="w-full bg-white border border-slate-300 hover:bg-deped-green hover:text-white text-slate-700 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-download"></i> Download Spreadsheet
+                    </button>
+                </div>
+
+                <!-- Document Card 3 -->
+                <div class="doc-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-lg transition flex flex-col justify-between" data-cat="mooe" data-title="disbursement voucher dv form e-dv">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">MOOE & Liquidation</span>
+                            <span class="text-[10px] text-slate-400 font-mono">DOCX • 820 KB</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Standard Disbursement Voucher (DV) Template</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Standardized COA-compliant DV format with automated accounting entry entries.</p>
+                    </div>
+                    <button onclick="downloadAlert('Standard Disbursement Voucher Template')" class="w-full bg-white border border-slate-300 hover:bg-deped-green hover:text-white text-slate-700 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-download"></i> Download Form
+                    </button>
+                </div>
+
+                <!-- Document Card 4 -->
+                <div class="doc-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-lg transition flex flex-col justify-between" data-cat="payroll" data-title="form 2307 generator payroll remittance">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Payroll & Salaries</span>
+                            <span class="text-[10px] text-slate-400 font-mono">PDF • 2.1 MB</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Payroll Deductions & Remittance Manual</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Guidelines on GSIS, Pag-IBIG, PhilHealth, and APDS loan deduction priorities and schedules.</p>
+                    </div>
+                    <button onclick="downloadAlert('Payroll Deductions Manual')" class="w-full bg-white border border-slate-300 hover:bg-deped-green hover:text-white text-slate-700 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-download"></i> Download Manual
+                    </button>
+                </div>
+
+                <!-- Document Card 5 -->
+                <div class="doc-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-lg transition flex flex-col justify-between" data-cat="procurement" data-title="small value procurement bac financial evaluation">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">Procurement (BAC)</span>
+                            <span class="text-[10px] text-slate-400 font-mono">ZIP • 3.5 MB</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Alternative Procurement Financial Tool Package</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Complete set: Abstract of Quotations, Canvass forms, and Purchase Order financial templates.</p>
+                    </div>
+                    <button onclick="downloadAlert('Alternative Procurement Package')" class="w-full bg-white border border-slate-300 hover:bg-deped-green hover:text-white text-slate-700 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-download"></i> Download Package
+                    </button>
+                </div>
+
+                <!-- Document Card 6 -->
+                <div class="doc-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-lg transition flex flex-col justify-between" data-cat="mooe" data-title="cash advance liquidation report summary">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">MOOE & Liquidation</span>
+                            <span class="text-[10px] text-slate-400 font-mono">XLSX • 680 KB</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">Cash Advance Liquidation Report (LR) Form</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Automated spreadsheet for petty cash and school MOOE liquidation reporting.</p>
+                    </div>
+                    <button onclick="downloadAlert('Cash Advance Liquidation Form')" class="w-full bg-white border border-slate-300 hover:bg-deped-green hover:text-white text-slate-700 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-download"></i> Download Spreadsheet
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Tools & Liquidation Calculator -->
+    <section id="calculators" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold text-deped-gold uppercase tracking-widest">Interactive Financial Tools</span>
+                <h3 class="text-3xl font-extrabold text-white mt-1">School Financial Calculators</h3>
+                <p class="text-slate-400 text-xs mt-2">Simplify your tax withholding and MOOE budget estimations instantly.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex p-1 rounded-xl bg-slate-800 border border-slate-700">
+                    <button id="tabTaxBtn" onclick="switchTool('tax')" class="px-5 py-2.5 rounded-lg text-xs font-bold bg-deped-green text-white transition">
+                        <i class="fa-solid fa-percent mr-1"></i> BIR Tax Calculator
+                    </button>
+                    <button id="tabMooeBtn" onclick="switchTool('mooe')" class="px-5 py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-calculator mr-1"></i> MOOE Allocation Breakdown
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tool 1: BIR Tax Withholding Calculator -->
+            <div id="toolTax" class="max-w-3xl mx-auto bg-slate-800/90 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-xl">
+                <h4 class="text-lg font-bold text-deped-gold mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Government Tax Withholding Calculator
+                </h4>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs text-slate-300 font-medium mb-1">Gross Invoice / Purchase Amount (₱)</label>
+                        <input type="number" id="taxGross" value="50000" oninput="calculateTax()" class="w-full text-sm font-semibold px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-deped-green">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-300 font-medium mb-1">Procurement Type</label>
+                        <select id="taxType" onchange="calculateTax()" class="w-full text-sm font-semibold px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-deped-green">
+                            <option value="goods">Purchase of Goods (1% EWT + 5% Final VAT)</option>
+                            <option value="services">Services (2% EWT + 5% Final VAT)</option>
+                            <option value="rental">Equipment / Space Rental (5% EWT + 5% VAT)</option>
+                            <option value="nonvat">Non-VAT Supplier (1% Goods / 2% Service + 3% Percentage Tax)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Calculation Results Panel -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-900/80 p-4 rounded-xl border border-slate-700">
+                    <div>
+                        <span class="text-[11px] text-slate-400 block">Gross Amount</span>
+                        <span id="resGross" class="text-base font-bold text-white">₱50,000.00</span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] text-amber-400 block">Total Tax Withheld</span>
+                        <span id="resTaxTotal" class="text-base font-bold text-amber-400">₱2,678.57</span>
+                    </div>
+                    <div>
+                        <span class="text-[11px] text-deped-brightgreen block">Net Payable Amount</span>
+                        <span id="resNet" class="text-base font-bold text-deped-brightgreen">₱47,321.43</span>
+                    </div>
+                </div>
+
+                <!-- Tax Breakdown Details -->
+                <div id="taxDetails" class="mt-4 text-xs text-slate-400 space-y-1 border-t border-slate-700/50 pt-3">
+                    <div class="flex justify-between">
+                        <span>Base Amount (Net of VAT 12%):</span>
+                        <span id="resBase" class="font-mono text-slate-200">₱44,642.86</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Expanded Withholding Tax (EWT):</span>
+                        <span id="resEwt" class="font-mono text-slate-200">₱446.43</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Government Final VAT (5%):</span>
+                        <span id="resVat" class="font-mono text-slate-200">₱2,232.14</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 2: MOOE Allocation Estimator -->
+            <div id="toolMooe" class="hidden max-w-3xl mx-auto bg-slate-800/90 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-xl">
+                <h4 class="text-lg font-bold text-deped-gold mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie"></i> School Monthly MOOE Distribution Planner
+                </h4>
+
+                <div class="mb-6">
+                    <label class="block text-xs text-slate-300 font-medium mb-1">Total Monthly School MOOE Cash Advance (₱)</label>
+                    <input type="number" id="mooeTotal" value="120000" oninput="calculateMooe()" class="w-full text-sm font-semibold px-3.5 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-deped-green">
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Utility Expenses (Electricity & Water - ~35%)</span>
+                            <span id="mooeUtilVal" class="font-bold text-deped-gold">₱42,000.00</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-deped-gold h-full" style="width: 35%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Office & Instructional Supplies (~25%)</span>
+                            <span id="mooeSuppVal" class="font-bold text-blue-400">₱30,000.00</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-400 h-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Internet & Communication (~15%)</span>
+                            <span id="mooeNetVal" class="font-bold text-emerald-400">₱18,000.00</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-emerald-400 h-full" style="width: 15%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Minor Repairs & Maintenance (~15%)</span>
+                            <span id="mooeRepVal" class="font-bold text-purple-400">₱18,000.00</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-purple-400 h-full" style="width: 15%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Security / Janitorial / Other (~10%)</span>
+                            <span id="mooeOtherVal" class="font-bold text-slate-300">₱12,000.00</span>
+                        </div>
+                        <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                            <div class="bg-slate-400 h-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Transparency Board Section -->
+    <section id="transparency" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-deped-green uppercase tracking-widest mb-1">Public Financial Accountability Board</h2>
+                <h3 class="text-3xl font-extrabold text-slate-900">Division Financial Compliance Dashboard</h3>
+                <p class="text-slate-600 text-xs mt-1">Real-time tracking of liquidation compliance and fund utilization performance across districts.</p>
+            </div>
+
+            <!-- Dashboard Analytics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold">Overall Liquidation Rate</div>
+                    <div class="text-3xl font-black text-deped-green mt-2">98.4%</div>
+                    <div class="text-[11px] text-emerald-600 mt-1 font-medium"><i class="fa-solid fa-arrow-up"></i> +2.1% from last quarter</div>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold">Total MOOE Disbursed</div>
+                    <div class="text-3xl font-black text-deped-navy mt-2">₱142.8M</div>
+                    <div class="text-[11px] text-slate-500 mt-1">Current Fiscal Year</div>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold">Fully Compliant Schools</div>
+                    <div class="text-3xl font-black text-slate-800 mt-2">148 / 152</div>
+                    <div class="text-[11px] text-deped-green mt-1 font-medium">97.3% Compliance</div>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold">Average TA Resolution</div>
+                    <div class="text-3xl font-black text-amber-600 mt-2">1.2 Days</div>
+                    <div class="text-[11px] text-slate-500 mt-1">Helpdesk Response Time</div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Bar Chart: District Compliance -->
+                <div class="lg:col-span-7 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h4 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-column text-deped-green"></i> District MOOE Liquidation Performance (%)
+                    </h4>
+                    <div class="h-64">
+                        <canvas id="districtChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Pie Chart: Fund Breakdown -->
+                <div class="lg:col-span-5 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h4 class="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-deped-navy"></i> MOOE Expense Distribution
+                    </h4>
+                    <div class="h-64 flex justify-center">
+                        <canvas id="expenseChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Accounting Unit Info -->
+    <section id="contact" class="py-16 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-deped-darknavy text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
+                    <div>
+                        <span class="text-xs font-bold text-deped-gold uppercase tracking-widest">Get In Touch</span>
+                        <h3 class="text-3xl font-black text-white mt-1 mb-4">Division Accounting Unit</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                            Have specific questions regarding financial compliance, audit observations, or payroll concerns? Visit or email our team.
+                        </p>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-deped-gold"><i class="fa-solid fa-building-columns"></i></div>
+                                <span>Schools Division Office - Finance Building, Accounting Section</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-deped-gold"><i class="fa-solid fa-envelope"></i></div>
+                                <span>sdo.accounting@deped.gov.ph</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-deped-gold"><i class="fa-solid fa-phone"></i></div>
+                                <span>(02) 8839-2041 / Local 104</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Feedback Form -->
+                    <div class="bg-white text-slate-800 p-6 rounded-2xl shadow-lg">
+                        <h4 class="text-base font-bold mb-3">Send Direct Feedback</h4>
+                        <form onsubmit="event.preventDefault(); alert('Thank you for your feedback!');" class="space-y-3 text-xs">
+                            <input type="text" placeholder="Your Name" required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-deped-green">
+                            <input type="email" placeholder="DepEd Email" required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-deped-green">
+                            <textarea placeholder="Message or suggestion..." rows="3" required class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-deped-green"></textarea>
+                            <button class="w-full bg-deped-navy text-white font-bold py-2.5 rounded-lg hover:bg-slate-800 transition">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-xs border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-white">PROJECT KWENTA</span>
+                <span>•</span>
+                <span>DepEd Accounting Support Portal</span>
+            </div>
+            <p class="text-center sm:text-right">
+                "Good Financial Management. Better Schools. Brighter Future."
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Technical Assistance Form Handler
+        function handleTaSubmit(e) {
+            e.preventDefault();
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const ticketId = `KW-2026-${randomNum}`;
+            
+            document.getElementById('generatedTicket').innerText = ticketId;
+            document.getElementById('taSuccessMsg').classList.remove('hidden');
+            
+            // Scroll to message
+            document.getElementById('taSuccessMsg').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Ticket Checker Simulation
+        function checkTicketStatus() {
+            const ticketVal = document.getElementById('ticketInput').value.trim();
+            const resBox = document.getElementById('ticketResult');
+
+            if (ticketVal === "") {
+                alert("Please enter a valid ticket number.");
+                return;
+            }
+
+            document.getElementById('resTicketId').innerText = ticketVal.toUpperCase();
+            resBox.classList.remove('hidden');
+        }
+
+        // Search & Filter Downloads Hub
+        function filterDocs() {
+            const searchVal = document.getElementById('docSearch').value.toLowerCase();
+            const catVal = document.getElementById('docCategory').value;
+            const cards = document.querySelectorAll('.doc-card');
+
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-cat');
+                const title = card.getAttribute('data-title');
+
+                const matchesCat = (catVal === 'all' || cat === catVal);
+                const matchesSearch = title.includes(searchVal);
+
+                if (matchesCat && matchesSearch) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Tool Switching Logic
+        function switchTool(tool) {
+            const taxTool = document.getElementById('toolTax');
+            const mooeTool = document.getElementById('toolMooe');
+            const taxBtn = document.getElementById('tabTaxBtn');
+            const mooeBtn = document.getElementById('tabMooeBtn');
+
+            if (tool === 'tax') {
+                taxTool.classList.remove('hidden');
+                mooeTool.classList.add('hidden');
+                taxBtn.className = "px-5 py-2.5 rounded-lg text-xs font-bold bg-deped-green text-white transition";
+                mooeBtn.className = "px-5 py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+            } else {
+                taxTool.classList.add('hidden');
+                mooeTool.classList.remove('hidden');
+                mooeBtn.className = "px-5 py-2.5 rounded-lg text-xs font-bold bg-deped-green text-white transition";
+                taxBtn.className = "px-5 py-2.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+            }
+        }
+
+        // BIR Tax Withholding Calculation Algorithm
+        function calculateTax() {
+            const gross = parseFloat(document.getElementById('taxGross').value) || 0;
+            const type = document.getElementById('taxType').value;
+
+            let baseAmount = gross;
+            let ewtRate = 0.01;
+            let vatRate = 0.05;
+
+            if (type === 'goods') {
+                baseAmount = gross / 1.12;
+                ewtRate = 0.01;
+                vatRate = 0.05;
+            } else if (type === 'services') {
+                baseAmount = gross / 1.12;
+                ewtRate = 0.02;
+                vatRate = 0.05;
+            } else if (type === 'rental') {
+                baseAmount = gross / 1.12;
+                ewtRate = 0.05;
+                vatRate = 0.05;
+            } else if (type === 'nonvat') {
+                baseAmount = gross;
+                ewtRate = 0.01;
+                vatRate = 0.03; // Percentage tax
+            }
+
+            const ewtVal = baseAmount * ewtRate;
+            const vatVal = baseAmount * vatRate;
+            const totalTax = ewtVal + vatVal;
+            const netPayable = gross - totalTax;
+
+            document.getElementById('resGross').innerText = `₱${gross.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('resTaxTotal').innerText = `₱${totalTax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('resNet').innerText = `₱${netPayable.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+            document.getElementById('resBase').innerText = `₱${baseAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('resEwt').innerText = `₱${ewtVal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${ewtRate * 100}%)`;
+            document.getElementById('resVat').innerText = `₱${vatVal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${vatRate * 100}%)`;
+        }
+
+        // MOOE Calculator Algorithm
+        function calculateMooe() {
+            const total = parseFloat(document.getElementById('mooeTotal').value) || 0;
+
+            document.getElementById('mooeUtilVal').innerText = `₱${(total * 0.35).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('mooeSuppVal').innerText = `₱${(total * 0.25).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('mooeNetVal').innerText = `₱${(total * 0.15).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('mooeRepVal').innerText = `₱${(total * 0.15).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            document.getElementById('mooeOtherVal').innerText = `₱${(total * 0.10).toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+        }
+
+        // Download Alert
+        function downloadAlert(title) {
+            alert(`Initiating download for: ${title}`);
+        }
+
+        // Initialize Chart.js Analytics
+        window.onload = function() {
+            calculateTax();
+            calculateMooe();
+
+            // District Performance Chart
+            const ctx1 = document.getElementById('districtChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['District I', 'District II', 'District III', 'District IV', 'District V', 'District VI'],
+                    datasets: [{
+                        label: 'Liquidation Rate (%)',
+                        data: [99.2, 97.5, 98.8, 100.0, 96.4, 98.1],
+                        backgroundColor: '#1e7e34',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            min: 90,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // Expense Breakdown Chart
+            const ctx2 = document.getElementById('expenseChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Utilities', 'School Supplies', 'Internet', 'Repairs', 'Other Ops'],
+                    datasets: [{
+                        data: [35, 25, 15, 15, 10],
+                        backgroundColor: ['#d4af37', '#134074', '#28a745', '#8b5cf6', '#64748b']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
